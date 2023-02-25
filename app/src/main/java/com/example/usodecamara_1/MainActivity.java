@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODIGO_CAMERA = 200;
     private static final int REQUEST_CODIGO_CAPTURAR_IMAGEN = 300;
     private static final int REQUEST_CODIGO_CAPTURAR_VIDEO = 101;
-    private Uri rutaVideo;
 
 
     @Override
@@ -60,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(imgFoto.getDrawable() == null){
-            btnCompartir.setVisibility(View.INVISIBLE);
-        }
 
 
         btnVerGaleria.setOnClickListener(new View.OnClickListener() {
@@ -135,13 +131,9 @@ public class MainActivity extends AppCompatActivity {
             Bitmap imgBitmap = BitmapFactory.decodeFile(rutaImagenes);
         }
 
-        if(requestCode == REQUEST_CODIGO_CAPTURAR_VIDEO && resultCode == RESULT_OK && data != null){
-            rutaVideo = data.getData();
-            Toast.makeText(MainActivity.this, "Ha grabado un video", Toast.LENGTH_SHORT).show();
-        }
+
 
         super.onActivityResult(requestCode,resultCode,data);
-
     }
 
     private void tomarFoto() {
